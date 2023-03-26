@@ -1,57 +1,64 @@
-// B. (Floyd)
-// https://www.xinyoudui.com/contest?courses=361&books=316&pages=12599&fragments=30285&problemId=1062&pattern=0
+// B. Tree Width
+// https://www.xinyoudui.com/contest?courses=361&books=316&pages=9735&fragments=18204&problemId=9521&pattern=0
 /*
-Use the Floyed algorithm to find any two-point shortest path. Output the shortest path value for the two given pairs of nodes separately, 
-and list the path nodes (the smallest one is output in lexicographic order).
+Description：
+Given a tree with n nodes numbered from 1 to N, among which 1 means the root. Please find out the width of the tree.
 
-input:
-1 3
-2 5
-5 7
-1 2 6
-1 4 2
-1 5 23
-2 3 4
-2 4 3
-3 4 20
-3 5 7
+Input：
+The first line contains a number N (1<=N<=1000).
+The next N lines, each line contains N single digit numbers (each could be either 1 or 0). When the i-th row and j-th column is 1, 
+it means nodes i and j have an edge. Otherwise, there is no edge. 
 
-Output:
-9
-1 4 2 3
-11
-2 3 5
+Output：
+the width of the tree
 
-Input :
-The first line has two integers s1, t1;
-The second line has two integers s2, t2;
-The third line has two integers n, m
-The following m lines have three integers a, b, and c for each line, indicating that there is an edge between a and b, and the weight 
-of the edge is c.
+Sample Input：
+10
+0110000000
+1001000000
+1000110001
+0100000000
+0010000000
+0010001000
+0000010110
+0000001000
+0000001000
+0010000000
 
-Output :
-The shortest path from s1 to t1, and the output path (the smallest one is output in lexicographic order)
-The shortest path from s2 to t2, and the output path (the smallest one is output in lexicographic order)
-
-Sample input:
-1 3
-2 5
-5 7
-1 2 6
-1 4 2
-1 5 23
-2 3 4
-2 4 3
-3 4 20
-3 5 7
-
-Sample output:
-9
-1 4 2 3
-11
-2 3 5
-
-data range: n<=200,m<=40000,c<=10^9
-time limit: 1000
-memory limit: 65536
+Sample output：
+4
 */
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<vector<int>> child(1001);
+int main() {
+  int n; cin>>n;
+  for (int i=0; i<n; i++) {
+    string s; cin>>s;
+    for (int j=0; j<n; j++) {
+      if (s[j]=='1') {
+        child[i].push_back(j);
+      }
+    }
+  }
+  vector<int> store(1001, 0);
+  queue<vector<int>> q;
+  q.push({0, 0});
+  while (!q.empty()) {
+    vector<int> curr=q.front();
+    store[curr[1]]++;
+    q.pop();
+    for (int i : child[curr[0]]) {
+      if (i==curr[2]) {
+        continue;
+      }
+      q.push({i, curr[1]+1, curr[0]});
+    }
+  }
+  int ans=0;
+  for (int i : store) {
+    ans=max(i, ans);
+  }
+  cout<<ans<<"\n";
+}
