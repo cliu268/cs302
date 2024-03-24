@@ -1,5 +1,6 @@
 // C. Diameter of a Tree
 // https://www.xinyoudui.com/contest?courses=361&books=316&pages=9735&fragments=18204&problemId=9502&pattern=0
+// https://www.xinyoudui.com/ac/contest/7740019EF0002E10119FCE/problem/9502
 /*
 Description：
 Given a tree rooted with node 1, output the tree's diameter
@@ -26,6 +27,7 @@ Sample Output 1：
 
 Limitation：1<=n<=100000
 */
+// Etaw
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -57,3 +59,50 @@ int main() {
   dfs(node1, -1, count);
   cout<<count1<<"\n";
 }
+
+// Ev
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// const int N_MAX = 1e5 + 1; 
+// vector<vector<int>> tree(N_MAX);
+// vector<int> visited(N_MAX, 0);
+
+// int ans=0; int furthest = 0;
+
+// void dfs(int distance, int node){
+//     if(distance > ans){
+//         ans = distance;
+//         // cout << ans << " ";
+//         furthest = node;
+//         // cout << furthest << endl;
+//     }
+//     for(int i=0; i<tree[node].size(); i++){
+//         if(visited[tree[node][i]] == 0){
+//             visited[tree[node][i]] = 1;
+//             dfs(distance + 1, tree[node][i]);
+//         }
+//     }
+// }
+
+// int main(){
+//     int n; cin >> n;
+//     for(int i=0; i<n-1; i++){
+//         int a, b; 
+//         cin >> a >> b;
+//         tree[a].push_back(b);
+//         tree[b].push_back(a);
+//     }
+
+//     // cout << "mark " << endl;
+
+//     dfs(0, 1);
+//     int z = furthest;
+//     ans = 0; furthest = 0;
+//     for(int i=0; i<n+1; i++){
+//         visited[i]=0;
+//     }
+//     dfs(0, z);
+
+//     cout << ans;
+// }

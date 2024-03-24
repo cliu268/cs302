@@ -1,5 +1,6 @@
 // A. Binary Tree Traversal 
 // https://www.xinyoudui.com/contest?courses=361&books=316&pages=12599&fragments=30285&problemId=8801&pattern=0
+// https://www.xinyoudui.com/ac/contest/7740019EF0002E10119FCE/problem/8801
 /*
 Description：
 Given a binary tree whose root is 1, output its pre-order traversal.
@@ -22,6 +23,7 @@ Sample output 1：
 
 Note：1<=n<=100
 */
+// Etaw
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -43,3 +45,31 @@ int main() {
     }
     pre(1);
 }
+
+// Ev
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// struct Node {
+//   int left = -1;
+//   int right = -1; 
+// } tree[101]; 
+
+// void preorder(int node){
+//     if(node==-1){
+//         return;
+//     }
+//     cout << node << " ";
+//     preorder(tree[node].left);
+//     preorder(tree[node].right);
+// }
+
+// int main(){
+//     int n; cin >> n;
+//     for(int i=1; i<=n; i++){
+//         int a, b; cin >> a >> b;
+//         tree[i].left = a;
+//         tree[i].right = b;
+//     }
+//     preorder(1);
+// }
